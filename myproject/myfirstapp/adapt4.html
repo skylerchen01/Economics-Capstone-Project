@@ -1,0 +1,22 @@
+{{ block title }}
+提前适应4
+{{ endblock }}
+
+{{ block content }}
+
+{{ if player.Recipes == 2 }}
+  <p>
+    正确&nbsp;获得500分
+  </p>
+{{ else }}
+ <p>
+    错误&nbsp;获得0分
+  </p>
+
+{{ endif }}
+
+  {{ next_button }}
+
+{{ endblock }}
+
+

@@ -1,0 +1,48 @@
+{{ block title }}
+时间偏好任务1
+{{ endblock }}
+
+{{ block content }}
+    <pre>
+在实验一开始时，你获得了1000积分作为参与费。现在，你需要选择你愿意支付这1000分中的多少分来降低噪音水平。
+
+你选择的噪音水平将在实验的下一环节中被播放。实验的下一个环节涉及到完成一些需要注意力的任务，而你在下个环节完成任务的表现将影响你下一部分的报酬。
+
+
+不同的噪声水平需要花费不同数量的积分达到，你可以滑动滑块，选择你愿意支付的积分和对应的噪音水平。
+
+你可以支付所有、一部分、或者不支付任何积分。
+
+
+
+    </pre>
+
+
+<audio type="hide" src="{{ static 'horse.mp3' }}" id="myVideo"   autoplay="true" >
+
+
+ </audio>
+<!--    {{ next_button }}-->
+
+<div id="next" style="display: none" >
+
+        {{ next_button }}
+</div>
+
+
+<script type="application/javascript">
+
+    var vid = document.getElementById("myVideo");
+
+
+
+    vid.addEventListener('ended', function () {
+        document.getElementById("next").style.display=""
+    }, false);
+
+
+</script>
+
+{{ endblock }}
+
+

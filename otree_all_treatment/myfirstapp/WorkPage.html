@@ -1,0 +1,154 @@
+{% extends "global/Page.html" %}
+
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Count zero
+{% endblock %}
+
+{% block content %}
+
+    <!--The next line adds the task specific content, getting 	the file name through the get_or_create_task function.-->
+
+    <div class="task-container">{{ include C.page2 }}	</div>
+
+    <div>Your answer is:</div>
+    <input type="text" id="answer" class="offer" 	style="background-color: white" required>
+    <button class="answer btn btn-outline-dark" type="button"  	data-feedback="false">Answer</button>
+
+<audio type="hide" src="{{ static 'noise1.mp3' }}" id="myVideo"   autoplay="true" >
+
+
+ </audio>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+         var vid = document.getElementById("myVideo");
+         vid.volume =js_vars.volume;
+    console.log(vid.volume)
+
+$(function () {
+    var $answer = $('input#answer');
+    var $btn_answer = $("button.answer");
+    $btn_answer.on("click", function () {
+
+
+        if ($answer.val()!=""){
+               liveSend($answer.val())
+                $answer.val('').focus();
+        }
+
+
+    });
+    $answer.keydown(function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            $btn_answer.click();
+            return false;
+        }
+    });
+
+})
+
+
+    function liveRecv(data) {
+    let cont=0
+        console.log( data.mat);
+      for (const r in data.mat) {
+
+            for (const c in data.mat[r]) {
+                if (data.mat[r][c]==0){
+                    cont++
+                }
+
+
+            }
+
+
+        }
+      console.info(cont)
+
+
+
+        let htmlbody="<tbody>"
+        for (const r in data.mat) {
+            htmlbody=htmlbody+"<tr>"
+            for (const c in data.mat[r]) {
+                  htmlbody=htmlbody+"<td>"+data.mat[r][c]+"</td>>"
+
+            }
+            htmlbody=htmlbody+"</tr>"
+
+        }
+        htmlbody=htmlbody+"</tbody>"
+        $('#task2').html(htmlbody);
+
+
+    }
+    </script>
+
+{% endblock %}
+
+
+{% block styles %}
+    <style type="text/css">
+        .otree-title {
+            background-color: steelblue;
+            color: white;
+            margin: 10px 0 10px 0;
+            padding: 20px;
+        }
+
+        .otree-timer {
+            display: none;
+        }
+
+        .otree-body {
+            text-indent: each-line;
+        }
+
+        .box-heading {
+            background-color: steelblue;
+            color: white;
+            margin: 10px 10px 10px 10px;
+            padding: 10px 10px 10px 24px;
+        }
+
+        .table-style {
+            color: black;
+            margin: 10px 10px 10px 10px;
+        }
+
+        .table-borders {
+            border: solid;
+            border: steelblue;
+            background-color: #ecf2f9;
+            align-content: center;
+
+        }
+
+        .offer {
+            background-color: whitesmoke;
+            color: navy;
+            padding: 1px 10px 1px 10px;
+            border: groove;
+            border-color: lightsteelblue;
+            font-weight: bold;
+            margin: 1px;
+        }
+
+        .otree-btn-next {
+            background-color: steelblue;
+            color: white;
+            padding: 5px 10px 5px 10px;
+
+        }
+
+        h2, h3, h4, h5, h6 {
+            font-weight: bolder;
+            color: #24435c;
+        }
+
+    </style>
+{% endblock %}

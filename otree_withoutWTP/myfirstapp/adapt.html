@@ -1,0 +1,35 @@
+{{ block title }}
+Recipe Task
+{{ endblock }}
+
+{{ block content }}
+
+<!-- <audio type="hide" src="{{ static 'dish1.mp3' }}" id="myVideo"   autoplay="true" > -->
+<audio type="hide" src="{{ static 'dish1.mp3' }}" id="myVideo"   autoplay="true" >
+z
+
+ </audio>
+
+<!--    {{ next_button }}-->
+
+<div id="next" style="display: none" >
+
+        {{ next_button }}
+</div>
+
+
+<script type="application/javascript">
+
+    var vid = document.getElementById("myVideo");
+    vid.volume=0.3;
+
+
+    vid.addEventListener('ended', function () {
+        document.getElementById("next").style.display=""
+    }, false);
+
+
+</script>
+{{ endblock }}
+
+

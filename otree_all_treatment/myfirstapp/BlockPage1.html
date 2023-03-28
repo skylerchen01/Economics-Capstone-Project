@@ -1,0 +1,46 @@
+{{ block title }}
+Time Task
+{{ endblock }}
+
+{{ block content }}
+    <pre>
+
+
+
+    </pre>
+<img src="{{static 'ctb.png' }}" style="width: 837px;">
+<pre>
+
+    (This is an example, you don't have to choose.)
+
+</pre>
+<!-- <audio type="hide" src="{{ static 'ctb.mp3' }}" id="myVideo"   autoplay="true" > -->
+<audio type="hide" src="{{ static 'ctb.mp3' }}" id="myVideo"   autoplay="true" >
+
+
+ </audio>
+
+
+<div id="next" style="display: none"  >
+
+        {{ next_button }}
+</div>
+
+
+<script type="application/javascript">
+
+    var vid = document.getElementById("myVideo");
+    vid.volume=0.3;
+
+
+
+    vid.addEventListener('ended', function () {
+        document.getElementById("next").style.display=""
+    }, false);
+
+
+</script>
+
+{{ endblock }}
+
+

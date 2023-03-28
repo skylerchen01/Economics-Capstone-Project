@@ -1,0 +1,17 @@
+
+
+{{ block title }}
+Feedback:
+{{ endblock }}
+{{ block content }}
+    You paid {{player.volume}} points to reduce the noise.
+    {{ next_button }}
+
+
+<script type="application/javascript">
+
+document.getElementById('volume').innerHTML=js_vars.volume
+
+</script>
+
+{{ endblock }}

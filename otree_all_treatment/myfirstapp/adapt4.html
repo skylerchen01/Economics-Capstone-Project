@@ -1,0 +1,22 @@
+{{ block title }}
+Recipe Task
+{{ endblock }}
+
+{{ block content }}
+
+{{ if player.Recipes == 2 }}
+  <p>
+    Correct:&nbsp;You earn 500 points
+  </p>
+{{ else }}
+ <p>
+    Wrong:&nbsp;You earn 0 points
+  </p>
+
+{{ endif }}
+
+  {{ next_button }}
+
+{{ endblock }}
+
+
